@@ -9,13 +9,14 @@ public class Factory {
 	private String contacts;
 	private String phone;
 	private String mobile;
-	private String fix;
+	private String fax;
 	private String cnote;
 	private String inspector;
 	private Integer orderNo;
 	private String createBy;
 	private String createDept;
 	private Date createTime;
+	private Integer status;
 
 	public String getId() {
 		return id;
@@ -65,12 +66,12 @@ public class Factory {
 		this.mobile = mobile;
 	}
 
-	public String getFix() {
-		return fix;
+	public String getFax() {
+		return fax;
 	}
 
-	public void setFix(String fix) {
-		this.fix = fix;
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 
 	public String getCnote() {
@@ -119,6 +120,14 @@ public class Factory {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 }

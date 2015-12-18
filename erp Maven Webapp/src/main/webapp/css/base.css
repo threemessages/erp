@@ -1,2 +1,10 @@
 *{margin:0;padding:0;list-style:none;}
 a{text-decoration:none;}
+
+.hide{display:none;}
+.toolbar{margin-bottom:10px;}
+.toolbar h1{font-size:24px;padding:18px 31px;border-bottom:1px solid #ccc;
+	color:#0076ff;
+}
+.red{color:#f4575a;}
+.green{color:#2d8033;}

@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ERP</title>
 <style type="text/css">
-.main-top{height:61px;background:#006983;padding:0 0 0 28px;font-size:31px;color:#fff;line-height:61px;
+.main-top{height:61px;background:#186d75;padding:0 0 0 28px;font-size:31px;color:#fff;line-height:61px;
 	border-bottom:1px solid #fff;
 }
 .main{width:100%;position:relative;}
 .main .main-left{width:200px;padding:18px 0;position:absolute;left:0;top:0;height:100%;text-align:center;
-	background:#006983;
+	background:#186d75;
 }
-.main .main-left li{line-height:31px;}
+.main .main-left li{line-height:38px;}
 .main .main-left li:hover{background:#f90870;}
 .main .main-left li a{color:#fff;}
 .main .main-right{position:absolute;left:210px;top:0;min-width:1000px;}
@@ -28,7 +28,7 @@
     	<div class="main-left" id="left">
 	    	<ul>
 	    		<li>
-	    			<a href="http://localhost:8080/erp/main.action" target="right">菜单1</a>
+	    			<a href="${ctx}/basicinfo/factory/list.action" target="right">生产厂家</a>
 	    		</li>
 	    		<li>
 	    			<a href="javascript:;" target="right">菜单2</a>
@@ -39,7 +39,7 @@
 	    	</ul>
     	</div>
     	<div class="main-right">
-    		<iframe frameborder="no" border="0" name="right" id="right" scrolling="no" ></iframe>
+    		<iframe frameborder="no" border="0" name="right" id="right" scrolling="auto" ></iframe>
     	</div>
     	    <script>
     	    	

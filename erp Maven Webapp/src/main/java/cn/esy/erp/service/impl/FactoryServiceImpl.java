@@ -1,8 +1,11 @@
 package cn.esy.erp.service.impl;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +15,7 @@ import cn.esy.erp.domain.Factory;
 import cn.esy.erp.pagination.Page;
 import cn.esy.erp.service.FactoryService;
 
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({ "rawtypes", "unchecked" })
 @Service
 public class FactoryServiceImpl implements FactoryService {
 
@@ -20,7 +23,6 @@ public class FactoryServiceImpl implements FactoryService {
 	FactoryDao factoryDao;
 
 	public List<Factory> findPage(Page page) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -33,6 +35,9 @@ public class FactoryServiceImpl implements FactoryService {
 	}
 
 	public void insert(Factory entity) {
+		entity.setId(UUID.randomUUID().toString());// 设置id
+		entity.setCreateTime(new Date());
+		entity.setStatus(1); // 默认启用
 		factoryDao.insert(entity);
 	}
 
@@ -46,6 +51,20 @@ public class FactoryServiceImpl implements FactoryService {
 
 	public void delete(Serializable[] ids) {
 		factoryDao.delete(ids);
+	}
+
+	public void enable(Serializable[] ids) {
+		Map map = new HashMap();
+		map.put("status", 1); // 为1时启用
+		map.put("ids", ids);
+		factoryDao.updateStatus(map);
+	}
+
+	public void disable(Serializable[] ids) {
+		Map map = new HashMap();
+		map.put("status", 0); // 为0时禁用
+		map.put("ids", ids);
+		factoryDao.updateStatus(map);
 	}
 
 }

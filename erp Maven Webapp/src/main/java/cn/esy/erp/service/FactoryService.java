@@ -23,4 +23,8 @@ public interface FactoryService {
 	public void deleteById(Serializable id); // 按id删除，删除一条；支持整数型和字符串类型ID
 
 	public void delete(Serializable[] ids);
+
+	public void enable(Serializable[] ids); // 启用
+
+	public void disable(Serializable[] ids); // 禁用
 }

@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="cnote" column="cnote"/>
 		<result property="inspector" column="inspector"/>
 		<result property="orderNo" column="order_no"/>
+		<result property="status" column="status"/>
 		
 		<result property="createBy" column="create_by"/>
 		<result property="createDept" column="create_dept"/>
@@ -23,6 +24,87 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="find" parameterType="map" resultMap="factoryRM">
 		select * from factory_c
-		where 1=1
+		where 1=1 order by create_time desc
 	</select>
+	
+	<select id="get" parameterType="string" resultMap="factoryRM">
+		select * from factory_c
+		where id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="cn.esy.erp.domain.Factory" >
+		insert into factory_c
+		(id,full_name,factory_name,contacts,phone,mobile,fax,cnote,inspector,order_no,create_by,create_dept,create_time,status)
+		values
+		(	#{id},
+		 	#{fullName},
+		 	#{factoryName},
+		 	#{contacts},
+		 	#{phone},
+		 	#{mobile},
+		 	#{fax},
+		 	#{cnote},
+		 	#{inspector},
+		 	#{orderNo},
+		 	#{createBy},
+		 	#{createDept},
+		 	#{createTime},
+		 	#{status}
+ 	     )
+	</insert>
+	<update id="update" parameterType="cn.esy.erp.domain.Factory" >
+		update factory_c
+		<set>
+			<if test="fullName != null">
+				full_name = #{fullName},
+			</if>
+			<if test="factoryName != null">
+				factory_name = #{factoryName},
+			</if>
+			<if test="contacts != null">
+				contacts = #{contacts},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="mobile != null">
+				mobile = #{mobile},
+			</if>
+			<if test="fax != null">
+				fax = #{fax},
+			</if>
+			<if test="cnote != null">
+				cnote = #{cnote},
+			</if>
+			<if test="inspector != null">
+				inspector = #{inspector},
+			</if>
+			<if test="orderNo != null">
+				order_no = #{orderNo}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="string">
+		delete from factory_c
+		where id = #{id}
+	</delete>
+	
+	<delete id="delete" parameterType="string">
+		delete from factory_c
+		where id in
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<update id="updateStatus" parameterType="map">
+		update factory_c
+		set status = #{status}
+		where id in
+		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</update>
 </mapper>
